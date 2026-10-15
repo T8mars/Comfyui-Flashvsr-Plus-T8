@@ -20,6 +20,7 @@
 | File handling | Home-relative paths, atomic output publication, independent concurrent VIDEO output files |
 | INT8 integrity | Original checkpoint SHA-256 provenance, strict metadata, independent INT8 directory without the floating DiT |
 | transformers 4.57.1 | Four nodes registered, all 45 tests passed, full 1080p five-second GPU workflow passed in isolation |
+| Single-image photos | Real LoadImage → Frames → SaveImage; BF16 / INT8, three samples, color-correction checks, saved-workflow replay. [Evidence and limits](SINGLE_IMAGE.md) |
 
 The 1080p configuration is **Turbo / Tiny / Triton / decode_every=4**. This is a correctness check; timings include model loading and validation and are not a general speed benchmark. [View the output clip](../assets/validation_1080p_5s.mp4).
 

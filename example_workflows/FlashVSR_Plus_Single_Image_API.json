@@ -1,0 +1,73 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "flashvsr_plus_sample.png"
+    }
+  },
+  "2": {
+    "class_type": "FlashVSRPlusModelLoader",
+    "inputs": {
+      "mode": "turbo",
+      "precision": "int8_convrot",
+      "attention": "auto",
+      "decoder": "tiny",
+      "auto_download": true,
+      "keep_loaded": false,
+      "model_directory": ""
+    }
+  },
+  "5": {
+    "class_type": "FlashVSRPlusOptions",
+    "inputs": {
+      "temporal_compression": 4,
+      "temporal_merge": "gaussian",
+      "temporal_gaussian_sigma": 1.0,
+      "decode_every": 28,
+      "cache_offload_mode": "auto",
+      "offload_original_cache": false,
+      "tiny_decoder_mode": "auto",
+      "tiny_decoder_channels_last": true,
+      "color_correction": true,
+      "color_correction_levels": 5,
+      "color_correction_chunk_size": 16,
+      "ffn_chunk_tokens": 8192,
+      "vae_tiled": true,
+      "vae_tile_height": 30,
+      "vae_tile_width": 52,
+      "vae_overlap": 15,
+      "video_preset": "veryfast"
+    }
+  },
+  "3": {
+    "class_type": "FlashVSRPlusUpscaleFrames",
+    "inputs": {
+      "scale": 4.0,
+      "width": 0,
+      "height": 0,
+      "seed": 1,
+      "images": [
+        "1",
+        0
+      ],
+      "model": [
+        "2",
+        0
+      ],
+      "options": [
+        "5",
+        0
+      ]
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "FlashVSRPlus/single_image",
+      "images": [
+        "3",
+        0
+      ]
+    }
+  }
+}

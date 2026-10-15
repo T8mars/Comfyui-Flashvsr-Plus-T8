@@ -1,4 +1,4 @@
-# FlashVSR+ T8 · Video Super-Resolution for ComfyUI
+# FlashVSR+ T8 · Video and Single-Image Super-Resolution for ComfyUI
 
 [简体中文](README.md) | **English**
 
@@ -21,7 +21,7 @@ The dependency list contains neither PyTorch nor transformers and does not repla
 
 ## Quick start
 
-1. Import the [VIDEO workflow](example_workflows/FlashVSR_Plus_Video.json) or [IMAGE workflow](example_workflows/FlashVSR_Plus_Frames.json). Copy the [sample video](example_workflows/flashvsr_plus_demo.mp4) into `ComfyUI/input`.
+1. For video, import the [VIDEO workflow](example_workflows/FlashVSR_Plus_Video.json) or [video-frame IMAGE workflow](example_workflows/FlashVSR_Plus_Frames.json). Copy the [sample video](example_workflows/flashvsr_plus_demo.mp4) into `ComfyUI/input`. For a single photo, use the dedicated workflow below.
 2. Choose the preset, precision, and decoder in **Model Loader**, leaving `auto_download=true`. Start with `turbo` + `int8_convrot` + `tiny`; INT8 requires Comfy Kitchen `>=0.2.35`.
 3. Set the scale or target dimensions and run. The VIDEO path preserves audio, FPS, and upstream trims/crops; use VIDEO for longer clips.
 
@@ -29,8 +29,14 @@ The dependency list contains neither PyTorch nor transformers and does not repla
 | --- | --- |
 | Model Loader | Turbo / Base / V1.1; BF16 / FP16 / INT8 ConvRot; Tiny / Wan VAE |
 | Upscale Video | Native VIDEO input/output with incremental reading and encoding |
-| Upscale Frames | IMAGE batch restoration with runtime information |
+| Upscale Frames | One RGB image or consecutive video frames, with runtime information |
 | Options | Temporal compression, cache offloading, decoding, and color correction |
+
+## Single-image upscaling
+
+Import the [single-image workflow](example_workflows/FlashVSR_Plus_Single_Image.json), select a static PNG/JPEG in **Load Image**, and run to save a PNG through **Save Image**. Copy the [sample image](example_workflows/flashvsr_plus_sample.png) into `ComfyUI/input` to reproduce the example, or drag in the [tested output PNG with its embedded workflow](assets/single_image/portrait.png). [API example](example_workflows/FlashVSR_Plus_Single_Image_API.json)
+
+Defaults: `turbo / int8_convrot / tiny`, 4×, fixed seed 1, and color correction enabled. Real BF16 / INT8 GPU checks covered a portrait, a 1080p photo, and a text chart. Photo enhancement passed for these samples; small text and flat graphics are not strictly faithful. Process unrelated images individually and preserve alpha separately. [Comparisons and acceptance scope](docs/SINGLE_IMAGE.md)
 
 ## Models and acceleration
 

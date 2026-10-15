@@ -1,4 +1,4 @@
-# FlashVSR+ T8 · ComfyUI 视频超分辨率
+# FlashVSR+ T8 · ComfyUI 视频与单图超分辨率
 
 **简体中文** | [English](README_EN.md)
 
@@ -21,7 +21,7 @@ python -m pip install -r custom_nodes/Comfyui-Flashvsr-Plus-T8/requirements.txt
 
 ## 快速使用
 
-1. 导入 [VIDEO 工作流](example_workflows/FlashVSR_Plus_Video.json) 或 [IMAGE 工作流](example_workflows/FlashVSR_Plus_Frames.json)。将 [示例视频](example_workflows/flashvsr_plus_demo.mp4) 放入 `ComfyUI/input`。
+1. 视频导入 [VIDEO 工作流](example_workflows/FlashVSR_Plus_Video.json) 或 [视频帧 IMAGE 工作流](example_workflows/FlashVSR_Plus_Frames.json)。将 [示例视频](example_workflows/flashvsr_plus_demo.mp4) 放入 `ComfyUI/input`。单张照片使用下方专用工作流。
 2. 在 **Model Loader** 选择模式、精度和解码器，保持 `auto_download=true`。推荐先用 `turbo` + `int8_convrot` + `tiny`；INT8 需要 Comfy Kitchen `>=0.2.35`。
 3. 设置倍率或目标宽高后运行。VIDEO 路径保留音频、帧率及上游剪辑/裁切；长视频优先使用 VIDEO。
 
@@ -29,8 +29,14 @@ python -m pip install -r custom_nodes/Comfyui-Flashvsr-Plus-T8/requirements.txt
 | --- | --- |
 | Model Loader | Turbo / Base / V1.1，BF16 / FP16 / INT8 ConvRot，Tiny / Wan VAE |
 | Upscale Video | 原生 VIDEO 输入输出，增量读取和编码 |
-| Upscale Frames | IMAGE 批次超分辨率，输出图像与运行信息 |
+| Upscale Frames | 单张 RGB 图片或连续视频帧超分辨率，输出图像与运行信息 |
 | Options | 时间压缩、缓存卸载、解码与颜色修正 |
+
+## 单图放大
+
+导入 [单图工作流](example_workflows/FlashVSR_Plus_Single_Image.json)，在 **Load Image** 选择静态 PNG/JPEG，运行后由 **Save Image** 保存 PNG。可将 [示例图片](example_workflows/flashvsr_plus_sample.png) 放入 `ComfyUI/input` 直接复现；也可拖入 [带工作流的实测结果 PNG](assets/single_image/portrait.png)。[API 示例](example_workflows/FlashVSR_Plus_Single_Image_API.json)
+
+默认 `turbo / int8_convrot / tiny`、4×、固定 seed 1，并开启颜色校正。已完成 BF16 / INT8 的人像、1080p 照片与文字图 GPU 实测；照片增强验收通过，小字与平色图表不保证保真。多张无关图片需逐张处理，透明通道需单独保留。[实测对比与验收范围](docs/SINGLE_IMAGE.md)
 
 ## 模型与加速
 

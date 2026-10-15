@@ -10,3 +10,13 @@ https://huggingface.co/JunhaoZhuang/FlashVSR-v1.1
 
 Original copyright and license notices in source files remain applicable.
 Distributed under Apache License 2.0; see LICENSE.
+
+Single-image sample photograph: Eileen Collins / NASA, public domain,
+distributed as scikit-image's astronaut sample:
+https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.astronaut
+The sample is resized; the corresponding result images are model-enhanced.
+
+Coffee acceptance photograph: Rachel Michetti / Pikolo Espresso Bar, CC0,
+distributed as scikit-image's coffee sample:
+https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coffee
+The input is cropped and resized; the result image is model-enhanced.

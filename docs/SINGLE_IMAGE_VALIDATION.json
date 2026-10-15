@@ -1,0 +1,266 @@
+{
+  "tested_on": "2026-10-15",
+  "runtime_source_commit": "349709f4fe641a5ba6cb705c63846722c3131905",
+  "hardware": "NVIDIA RTX 5090 Laptop GPU, 24 GB",
+  "os": "Windows",
+  "torch": "2.7.0+cu128",
+  "comfyui": "0.41.0",
+  "triton_windows": "3.3.1.post21",
+  "preset": "turbo",
+  "decoder": "tiny",
+  "temporal_compression": 4,
+  "seed": 1,
+  "attention": "triton_block_sparse; saved workflow auto resolved to the same backend",
+  "checkpoint_catalog_sha256": {
+    "turbo_dit": "7862b92178176fa3aebc34c6c071daca6b56ab1dddb8e7ff9a01c47f5226ec8b",
+    "turbo_lq": "e77b378ae12342eefbb58f924256f362a151b93ce73dd32808fcdaca9c051496",
+    "tiny": "e224bdcf2f52745cbf4d393ff5374c2ba09e90285d5d19062d2bf63b915b6161",
+    "turbo_int8_convrot": "14150f06a5661e6da479f7583766c55e310e16cf3ce538ba56dc70188f03d773"
+  },
+  "inference_runs": 10,
+  "executed_path": "LoadImage -> FlashVSRPlusUpscaleFrames -> SaveImage",
+  "quality_review": {
+    "reviewers": [
+      "primary_agent",
+      "independent_subagent"
+    ],
+    "method": "Actual input/reference/output images inspected, including BF16/INT8 and color-correction comparisons",
+    "photos": "Passed for these two samples: composition and main geometry retained, no black output, grid, or seams",
+    "text_and_graphics": "Strict fidelity not passed: small glyph changes, flat-field texture, saturation shifts and faint edge halos",
+    "color_correction": "Improved overall color on the tested samples; does not restore exact text or flat fields",
+    "scope": "Sample-limited photo enhancement acceptance, not lossless restoration or universal image quality"
+  },
+  "cases": [
+    {
+      "sample": "portrait",
+      "precision": "int8_convrot",
+      "color_correction": false,
+      "prompt_id": "28aec8b0-16b9-4185-8b02-3c1ba0eb01ef",
+      "input_size": [
+        256,
+        256
+      ],
+      "input_sha256": "daf43f9d7b22de47d5ba2779ff8d2d0387cd0723f5148575557a9428bdf8cd92",
+      "output_size": [
+        1024,
+        1024
+      ],
+      "output_sha256": "7ef806dee0d0cec0a3fb8572bbcc4d051b921db19d8da181941d2e1f3db01c02",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 30.344,
+      "visual_review": "photo_enhancement_passed"
+    },
+    {
+      "sample": "portrait",
+      "precision": "bf16",
+      "color_correction": false,
+      "prompt_id": "791bf6c7-53ab-48d8-9516-ff3b5659b882",
+      "input_size": [
+        256,
+        256
+      ],
+      "input_sha256": "daf43f9d7b22de47d5ba2779ff8d2d0387cd0723f5148575557a9428bdf8cd92",
+      "output_size": [
+        1024,
+        1024
+      ],
+      "output_sha256": "942e1d59707ce13ef84478240d290a9b3798e67fd31e238f19cc63b554264c13",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 12.11,
+      "visual_review": "photo_enhancement_passed"
+    },
+    {
+      "sample": "portrait",
+      "precision": "int8_convrot",
+      "color_correction": true,
+      "prompt_id": "f88750c9-e001-4d14-a51b-5d1aa2318399",
+      "input_size": [
+        256,
+        256
+      ],
+      "input_sha256": "daf43f9d7b22de47d5ba2779ff8d2d0387cd0723f5148575557a9428bdf8cd92",
+      "output_size": [
+        1024,
+        1024
+      ],
+      "output_sha256": "7e221aed8cddd2ca3a7953d68822f4919b94c69fa93adab9d608786e1ee610b2",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 12.125,
+      "visual_review": "photo_enhancement_passed"
+    },
+    {
+      "sample": "coffee_1080p",
+      "precision": "int8_convrot",
+      "color_correction": false,
+      "prompt_id": "efc15b23-6992-4067-a450-044f2346c796",
+      "input_size": [
+        480,
+        270
+      ],
+      "input_sha256": "020bf6e7768b5906f006ef611c443c0393eb8637e8822a8b56f2e44a621385d2",
+      "output_size": [
+        1920,
+        1080
+      ],
+      "output_sha256": "169901b04602e6afbf30e2302a17bf9cac09e0edb8f1e1ae0734358e3e81b842",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 12.187,
+      "visual_review": "photo_enhancement_passed"
+    },
+    {
+      "sample": "coffee_1080p",
+      "precision": "bf16",
+      "color_correction": false,
+      "prompt_id": "93c61c12-6c5e-44ab-9442-a216a462d154",
+      "input_size": [
+        480,
+        270
+      ],
+      "input_sha256": "020bf6e7768b5906f006ef611c443c0393eb8637e8822a8b56f2e44a621385d2",
+      "output_size": [
+        1920,
+        1080
+      ],
+      "output_sha256": "241a321477a119496e8864dfb0358e7bad6881d833209c24ffa15c516d1b1203",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 14.703,
+      "visual_review": "photo_enhancement_passed"
+    },
+    {
+      "sample": "coffee_1080p",
+      "precision": "int8_convrot",
+      "color_correction": true,
+      "prompt_id": "1098ca0e-a7a5-4701-942a-b551ca80ef26",
+      "input_size": [
+        480,
+        270
+      ],
+      "input_sha256": "020bf6e7768b5906f006ef611c443c0393eb8637e8822a8b56f2e44a621385d2",
+      "output_size": [
+        1920,
+        1080
+      ],
+      "output_sha256": "a2a2531a8f4477c1cccf5d06d4dd16d5c74d05dd450f66b2715729d64e2eff0a",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 14.141,
+      "visual_review": "photo_enhancement_passed"
+    },
+    {
+      "sample": "text_lines",
+      "precision": "int8_convrot",
+      "color_correction": false,
+      "prompt_id": "338a8d3b-4ef7-4654-8950-817413a30ff5",
+      "input_size": [
+        256,
+        192
+      ],
+      "input_sha256": "a3d43cfc89588b3b233a1eb18cfeaa3599d9c00f5465c33ac4718fe910516674",
+      "output_size": [
+        1024,
+        768
+      ],
+      "output_sha256": "3ef0b5fc79f1e52377c327979c6c9a5001062c7f8e2e6972e5a12b960ba8ba0f",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 8.109,
+      "visual_review": "strict_fidelity_not_passed"
+    },
+    {
+      "sample": "text_lines",
+      "precision": "bf16",
+      "color_correction": false,
+      "prompt_id": "5445e2f0-bd6e-45af-83c8-acdf93df10a3",
+      "input_size": [
+        256,
+        192
+      ],
+      "input_sha256": "a3d43cfc89588b3b233a1eb18cfeaa3599d9c00f5465c33ac4718fe910516674",
+      "output_size": [
+        1024,
+        768
+      ],
+      "output_sha256": "32a2e3c383c1829a5dcb3427bdf5994bf6ecc71b2653f9cb6155cd244f07195c",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 10.766,
+      "visual_review": "strict_fidelity_not_passed"
+    },
+    {
+      "sample": "text_lines",
+      "precision": "int8_convrot",
+      "color_correction": true,
+      "prompt_id": "14fe7bd9-2f9f-4db2-997a-3cde58fbaa22",
+      "input_size": [
+        256,
+        192
+      ],
+      "input_sha256": "a3d43cfc89588b3b233a1eb18cfeaa3599d9c00f5465c33ac4718fe910516674",
+      "output_size": [
+        1024,
+        768
+      ],
+      "output_sha256": "7dfd7e401ae586d6e850639ffedffd233c1fc4c62a3dbfbe891faae0964f0eb4",
+      "output_images": 1,
+      "mode": "RGB",
+      "execution_passed": true,
+      "wall_seconds_including_load": 8.125,
+      "visual_review": "strict_fidelity_not_passed"
+    }
+  ],
+  "bf16_int8_same_seed_comparison": {
+    "portrait": {
+      "color_correction": false,
+      "pixel_mae_0_to_255": 0.7100566228230795,
+      "ssim": 0.9954179153455208
+    },
+    "coffee_1080p": {
+      "color_correction": false,
+      "pixel_mae_0_to_255": 0.9434481095679013,
+      "ssim": 0.993323840963292
+    },
+    "text_lines": {
+      "color_correction": false,
+      "pixel_mae_0_to_255": 0.384895748562283,
+      "ssim": 0.9965119678125819
+    }
+  },
+  "saved_workflow_replay": {
+    "ui_api_roundtrip": true,
+    "prompt_id": "4bf73686-e5d1-407f-8cd5-b460cc45e91b",
+    "output_sha256": "b916c077a14104315405c290873bc9b2fee53ac1f3af1b0a161fe2702ccb2c57",
+    "workflow_sha256": "5fa128557a7dc2cbf79d2b72962e436a1dd24b1b1b8b06baeb887a28a8490fa9",
+    "api_sha256": "49fd762e2aa4db559f114225d066b9b08f11190dd279a205cf9bbcc098401914",
+    "embedded_workflow_and_prompt": true,
+    "exactly_one_rgb_png": true,
+    "width": 1024,
+    "height": 1024,
+    "pixel_mae_to_prior_color_corrected_test": 0.0,
+    "execution_seconds_including_load": 8.911
+  },
+  "published_artifacts": {
+    "assets/single_image/coffee_1080p.png": "792487c79921d4590cce81bbc2cedb113e6b910d00e0e359d224e273ab29d1ce",
+    "assets/single_image/coffee_1080p_input.png": "020bf6e7768b5906f006ef611c443c0393eb8637e8822a8b56f2e44a621385d2",
+    "assets/single_image/comparison.jpg": "4862eb3c729a17dc152f72c9484ff76751159a188d2802affa6d035b5bc45955",
+    "assets/single_image/portrait.png": "b916c077a14104315405c290873bc9b2fee53ac1f3af1b0a161fe2702ccb2c57",
+    "assets/single_image/text_comparison.jpg": "7765d3c54f6068d884e8b05f0a712adc2f6e7524045dfcb25991308e7efa5fae",
+    "assets/single_image/text_limit.png": "c0ea3f7803e14703344c045149bca71fd0cbae638ab238ee73f847aa697b231c",
+    "assets/single_image/text_limit_input.png": "a3d43cfc89588b3b233a1eb18cfeaa3599d9c00f5465c33ac4718fe910516674"
+  },
+  "sample_sha256": "daf43f9d7b22de47d5ba2779ff8d2d0387cd0723f5148575557a9428bdf8cd92",
+  "timing_note": "Includes model loading, queue/client checks and first-run kernel compilation; not an isolated speed benchmark",
+  "reference_note": "Photo references are lower resolution than the 4x outputs, so reference-size PSNR/SSIM are not quality pass criteria"
+}

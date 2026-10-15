@@ -1,0 +1,12 @@
+FlashVSR+ T8
+
+ComfyUI integration and INT8 ConvRot derivatives: T8star.
+
+Based on FlashVSR+ by OpenImagingLab:
+https://github.com/OpenImagingLab/FlashVSR_Plus
+
+FlashVSR V1.1 checkpoints by Junhao Zhuang and collaborators:
+https://huggingface.co/JunhaoZhuang/FlashVSR-v1.1
+
+Original copyright and license notices in source files remain applicable.
+Distributed under Apache License 2.0; see LICENSE.

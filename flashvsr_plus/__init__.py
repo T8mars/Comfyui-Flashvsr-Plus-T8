@@ -1,10 +1,10 @@
 """Stable public import surface for FlashVSR+ inference.
 
-The implementation remains in the existing ``inference`` package so current
-module and CLI entry points continue to work unchanged.
+The implementation lives in this private namespace. The root ``inference``
+package preserves the original CLI and public entry point.
 """
 
-from inference import (
+from .inference import (
     ColorCorrectionConfig,
     DecoderConfig,
     FlashVSRInferencePipeline,
@@ -32,4 +32,4 @@ __all__ = [
     "stream_config_for_mode",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

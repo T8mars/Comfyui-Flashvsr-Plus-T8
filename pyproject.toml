@@ -3,20 +3,42 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "flashvsr-plus"
-version = "0.1.0"
-description = "Inference pipeline for FlashVSR+ video super-resolution"
+name = "flashvsr-plus-t8"
+version = "0.2.0"
+description = "FlashVSR+ T8 video super-resolution nodes for ComfyUI with streaming VIDEO and INT8 ConvRot"
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.10"
 
-# Runtime dependencies are intentionally installed from requirements.txt. In
-# particular, this package does not replace a user's existing PyTorch/CUDA
-# installation when installed by a host application such as ComfyUI.
-dependencies = []
+# PyTorch, CUDA and transformers remain owned by the ComfyUI environment.
+dependencies = [
+    "einops>=0.8", "imageio>=2.36", "imageio-ffmpeg>=0.5.1", "numpy>=1.26",
+    "opencv-python>=4.10", "Pillow>=10.0", "safetensors>=0.5", "tqdm>=4.66",
+    "huggingface_hub>=0.28", "requests>=2.31",
+]
+classifiers = [
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Environment :: GPU :: NVIDIA CUDA",
+]
+
+[project.urls]
+Repository = "https://github.com/T8mars/Comfyui-Flashvsr-Plus-T8"
+Documentation = "https://github.com/T8mars/Comfyui-Flashvsr-Plus-T8/blob/main/README_EN.md"
+"Bug Tracker" = "https://github.com/T8mars/Comfyui-Flashvsr-Plus-T8/issues"
+Issues = "https://github.com/T8mars/Comfyui-Flashvsr-Plus-T8/issues"
+Models = "https://huggingface.co/t8star/Flashvsr-Plus-Comfy"
+
+[tool.comfy]
+PublisherId = "t8star"
+DisplayName = "FlashVSR+ T8"
+requires-comfyui = ">=0.36.0"
 
 [tool.setuptools.packages.find]
-include = ["inference*", "model_io*", "models*", "flashvsr_plus*"]
+include = ["flashvsr_plus*", "inference*"]
 
 [tool.setuptools.package-data]
-flashvsr_plus = ["py.typed"]
+flashvsr_plus = ["py.typed", "assets/*.pth"]
+
+[project.optional-dependencies]
+int8 = ["comfy-kitchen>=0.2.35"]

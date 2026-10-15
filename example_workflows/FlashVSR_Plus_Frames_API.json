@@ -1,0 +1,78 @@
+{
+  "1": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "flashvsr_plus_demo.mp4"
+    }
+  },
+  "2": {
+    "class_type": "FlashVSRPlusModelLoader",
+    "inputs": {
+      "mode": "turbo",
+      "precision": "int8_convrot",
+      "attention": "auto",
+      "decoder": "tiny",
+      "auto_download": true,
+      "keep_loaded": false,
+      "model_directory": ""
+    }
+  },
+  "5": {
+    "class_type": "GetVideoComponents",
+    "inputs": {
+      "video": [
+        "1",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "FlashVSRPlusUpscaleFrames",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "images": [
+        "5",
+        0
+      ],
+      "scale": 4.0,
+      "width": 0,
+      "height": 0,
+      "seed": 1
+    }
+  },
+  "6": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "audio": [
+        "5",
+        1
+      ],
+      "fps": [
+        "5",
+        2
+      ],
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "h264"
+    }
+  },
+  "4": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "6",
+        0
+      ],
+      "filename_prefix": "video/FlashVSRPlus",
+      "format": "auto",
+      "format.codec": "auto"
+    }
+  }
+}
